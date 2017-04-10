@@ -4,6 +4,7 @@ import core.Parser;
 import core.Loader;
 
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 
 /**
  * Created by Gadel on 08.04.2017.
@@ -12,8 +13,13 @@ import java.io.FileNotFoundException;
  * @todo Необходимо реализовать класс с загрузкой файлов по списку ссылок.
  */
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("App started...");
+
+        /**
+         * Словарь вида "ключ"-"значение" для хранения аргументов.
+         */
+        HashMap<String, String> cmdArgs = new HashMap<String, String>();
 
         /**
          * Количество потоков (-n)
@@ -41,19 +47,28 @@ public class App {
         for (int n = 0; n < args.length; n++) {
             switch (args[n]) {
                 case "-n":
-                    argThreadCount = args[++n];
+                    //argThreadCount = args[++n];
+                    cmdArgs.put("-n", args[++n]);
                     break;
                 case "-l":
-                    argLoadSpeed = args[++n];
+                    //argLoadSpeed = args[++n];
+                    cmdArgs.put("-l", args[++n]);
                     break;
                 case "-f":
-                    argLinksFile = args[++n];
+                    //argLinksFile = args[++n];
+                    cmdArgs.put("-f", args[++n]);
                     break;
                 case "-o":
-                    argOutputFolder = args[++n];
+                    //argOutputFolder = args[++n];
+                    cmdArgs.put("-o", args[++n]);
                     break;
+                default:
+                    throw new Exception("Unknown key " + args[n]);
             }
+
         }
+
+        System.out.println(cmdArgs);
 
         /*try {
             Parser parser = new Parser("C:/data.txt");

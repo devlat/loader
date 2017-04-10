@@ -15,14 +15,22 @@ import java.io.FileNotFoundException;
 public class Loader {
     /**
      * Установка настроек локального прокси.
+     * @param int useProxy
      */
-    public Loader() {
+    public Loader(int useProxy) {
         /**
          * Set CNTLM local proxy to access network
          */
-		System.setProperty("http.proxyHost", "127.0.0.1");
-		System.setProperty("http.proxyPort", "3130");
+        if (useProxy == 1) {
+            System.setProperty("http.proxyHost", "127.0.0.1");
+            System.setProperty("http.proxyPort", "3130");
+        }
     }
+
+    /**
+     * Empty constructor
+     */
+    public Loader() {}
 
     /**
      * Загрузка файла по HTTP и дальнейшая его запись в указанный файл.
