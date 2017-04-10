@@ -15,7 +15,27 @@ public class App {
     public static void main(String[] args) {
         System.out.println("App started...");
 
-        try {
+        /**
+         * Черновой вариант парсинга аргументов запуска
+         */
+        for (int n = 0; n < args.length; n++) {
+            switch (args[n]) {
+                case "-n":
+                    System.out.println("Параметр -n:" + args[++n]);
+                    break;
+                case "-l":
+                    System.out.println("Параметр -n:" + args[++n]);
+                    break;
+                case "-f":
+                    System.out.println("Параметр -n:" + args[++n]);
+                    break;
+                case "-o":
+                    System.out.println("Параметр -n:" + args[++n]);
+                    break;
+            }
+        }
+
+        /*try {
             Parser parser = new Parser("C:/data.txt");
             parser.parseFile();
 
@@ -23,7 +43,7 @@ public class App {
 
             /**
              * Скачиваем файлы.
-             */
+             *//*
             parser.getLinks().forEach((String key, String value) -> {
                 //System.out.println(key + " := " + value);
 
@@ -37,6 +57,6 @@ public class App {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-        }
+        }*/
     }
 }

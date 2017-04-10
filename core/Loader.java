@@ -26,17 +26,13 @@ public class Loader {
 
     /**
      * Загрузка файла по HTTP и дальнейшая его запись в указанный файл.
-     * @param String urlString
-     * @param String outputFilePath
+     * @param String urlString ссылка на файл
+     * @param String outputFilePath наименование выходного файла
      */
     public void loadData(String urlString, String outputFilePath) throws FileNotFoundException {
         byte[] data = new byte[16];
         int count = 0;
         File outputFile = new File(outputFilePath);
-/*
-        if (!outputFile.isFile()) {
-            throw new FileNotFoundException("File not found");
-        }*/
 
         try {
             URL url = new URL(urlString);
@@ -46,8 +42,6 @@ public class Loader {
             FileOutputStream outputStream = new FileOutputStream(outputFile);
 
             while ((count = inputStream.read(data, 0, 16)) != -1) {
-                //System.out.println(data);
-
                 outputStream.write(data, 0, 16);
             }
 
