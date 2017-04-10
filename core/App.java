@@ -14,8 +14,9 @@ public class App {
         System.out.println("App started...");
 
         try {
-            Parser parser = new Parser("C:/test.txt");
+            Parser parser = new Parser("C:/data.txt");
             parser.parseFile();
+            parser.printLinks();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

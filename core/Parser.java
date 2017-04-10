@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 /**
  * Created by Gadel on 09.04.2017.
@@ -12,6 +14,7 @@ import java.io.FileNotFoundException;
  */
 public class Parser {
     private File inputFile;
+    private HashMap<String, String> links = new HashMap<String, String>();
 
     /**
      * В конструкторе инициализируем файл.
@@ -30,22 +33,41 @@ public class Parser {
      * Парсим файл.
      */
     public void parseFile() {
-        String dataLine;
+        String data;
+        FileReader fr;
+        BufferedReader buffer;
 
         try {
-            FileReader fr = new FileReader(this.inputFile);
+            fr = new FileReader(this.inputFile);
 
-            BufferedReader buffer = new BufferedReader(fr);
+            buffer = new BufferedReader(fr);
 
-            while ((dataLine = buffer.readLine()) != null) {
+            while ((data = buffer.readLine()) != null) {
+                String[] extractedData = data.split(" ");
+
                 /**
                  * Временно, в качестве проверки.
                  * @todo необходимо записывать в HashMap для последующего использования.
                  */
-                System.out.println(dataLine);
+                //System.out.println(data);
+
+                this.links.put(extractedData[0], extractedData[1]);
             }
+
+            buffer.close();
+            fr.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * TEMP
+     * Вывод значений коллекции
+     */
+    public void printLinks() {
+        for (Entry<String, String> link : this.links.entrySet()) {
+            System.out.println(link.getKey() + "::" + link.getValue());
         }
     }
 }
