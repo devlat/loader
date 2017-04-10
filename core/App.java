@@ -24,13 +24,13 @@ public class App {
                     System.out.println("Параметр -n:" + args[++n]);
                     break;
                 case "-l":
-                    System.out.println("Параметр -n:" + args[++n]);
+                    System.out.println("Параметр -l:" + args[++n]);
                     break;
                 case "-f":
-                    System.out.println("Параметр -n:" + args[++n]);
+                    System.out.println("Параметр -f:" + args[++n]);
                     break;
                 case "-o":
-                    System.out.println("Параметр -n:" + args[++n]);
+                    System.out.println("Параметр -o:" + args[++n]);
                     break;
             }
         }
