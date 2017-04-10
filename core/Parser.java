@@ -39,17 +39,10 @@ public class Parser {
 
         try {
             fr = new FileReader(this.inputFile);
-
             buffer = new BufferedReader(fr);
 
             while ((data = buffer.readLine()) != null) {
                 String[] extractedData = data.split(" ");
-
-                /**
-                 * Временно, в качестве проверки.
-                 * @todo необходимо записывать в HashMap для последующего использования.
-                 */
-                //System.out.println(data);
 
                 this.links.put(extractedData[0], extractedData[1]);
             }
@@ -62,7 +55,7 @@ public class Parser {
     }
 
     /**
-     * TEMP
+     * TEMPORARY
      * Вывод значений коллекции
      */
     public void printLinks() {
