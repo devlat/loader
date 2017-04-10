@@ -21,45 +21,21 @@ public class App {
          */
         HashMap<String, String> cmdArgs = new HashMap<String, String>();
 
-        /**
-         * Количество потоков (-n)
-         */
-        String argThreadCount = null;
-
-        /**
-         * Ограничение на скорость скачивания (-l)
-         */
-        String argLoadSpeed = null;
-
-        /**
-         * Путь к файлу со ссылками (-f)
-         */
-        String argLinksFile = null;
-
-        /**
-         * Имя(или путь?) к папке, куда сохранять скачанные файлы
-         */
-        String argOutputFolder = null;
-
         /************************************************
          * Черновой вариант парсинга аргументов запуска *
          ************************************************/
         for (int n = 0; n < args.length; n++) {
             switch (args[n]) {
                 case "-n":
-                    //argThreadCount = args[++n];
                     cmdArgs.put("-n", args[++n]);
                     break;
                 case "-l":
-                    //argLoadSpeed = args[++n];
                     cmdArgs.put("-l", args[++n]);
                     break;
                 case "-f":
-                    //argLinksFile = args[++n];
                     cmdArgs.put("-f", args[++n]);
                     break;
                 case "-o":
-                    //argOutputFolder = args[++n];
                     cmdArgs.put("-o", args[++n]);
                     break;
                 default:
@@ -67,8 +43,6 @@ public class App {
             }
 
         }
-
-        System.out.println(cmdArgs);
 
         /*try {
             Parser parser = new Parser("C:/data.txt");
