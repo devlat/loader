@@ -16,21 +16,41 @@ public class App {
         System.out.println("App started...");
 
         /**
-         * Черновой вариант парсинга аргументов запуска
+         * Количество потоков (-n)
          */
+        String argThreadCount = null;
+
+        /**
+         * Ограничение на скорость скачивания (-l)
+         */
+        String argLoadSpeed = null;
+
+        /**
+         * Путь к файлу со ссылками (-f)
+         */
+        String argLinksFile = null;
+
+        /**
+         * Имя(или путь?) к папке, куда сохранять скачанные файлы
+         */
+        String argOutputFolder = null;
+
+        /************************************************
+         * Черновой вариант парсинга аргументов запуска *
+         ************************************************/
         for (int n = 0; n < args.length; n++) {
             switch (args[n]) {
                 case "-n":
-                    System.out.println("Параметр -n:" + args[++n]);
+                    argThreadCount = args[++n];
                     break;
                 case "-l":
-                    System.out.println("Параметр -l:" + args[++n]);
+                    argLoadSpeed = args[++n];
                     break;
                 case "-f":
-                    System.out.println("Параметр -f:" + args[++n]);
+                    argLinksFile = args[++n];
                     break;
                 case "-o":
-                    System.out.println("Параметр -o:" + args[++n]);
+                    argOutputFolder = args[++n];
                     break;
             }
         }
