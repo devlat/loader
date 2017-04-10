@@ -1,6 +1,7 @@
 package core;
 
 import core.Parser;
+import core.Loader;
 
 import java.io.FileNotFoundException;
 
@@ -17,7 +18,22 @@ public class App {
         try {
             Parser parser = new Parser("C:/data.txt");
             parser.parseFile();
-            parser.printLinks();
+
+            Loader downloader = new Loader();
+
+            /**
+             * Скачиваем файлы.
+             */
+            parser.getLinks().forEach((String key, String value) -> {
+                //System.out.println(key + " := " + value);
+
+                try {
+                    downloader.loadData(key, "C:/output/" + value);
+                } catch (FileNotFoundException e) {
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
+            });
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

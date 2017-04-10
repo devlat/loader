@@ -30,7 +30,7 @@ public class Parser {
     }
 
     /**
-     * Парсим файл.
+     * Метод парсит файл и записывает ссылки в коллекцию.
      */
     public void parseFile() {
         String data;
@@ -55,12 +55,15 @@ public class Parser {
     }
 
     /**
-     * TEMPORARY
-     * Вывод значений коллекции
+     * Метод возвращает коллекцию со ссылками.
+     * @return HashMap<Stringm, String>
      */
-    public void printLinks() {
-        for (Entry<String, String> link : this.links.entrySet()) {
-            System.out.println(link.getKey() + "::" + link.getValue());
+    public HashMap<String, String> getLinks() {
+        if (this.links.isEmpty()) {
+            System.out.println("Данных нет.");
+            return null;
         }
+
+        return this.links;
     }
 }
