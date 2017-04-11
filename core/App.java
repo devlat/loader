@@ -5,6 +5,8 @@ import core.Loader;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Gadel on 08.04.2017.
@@ -43,6 +45,27 @@ public class App {
             }
 
         }
+
+        // ************************************************************
+        // * Черновой вариант под реализацию многопоточной загрузки *
+        // ************************************************************
+        ArrayList<Thread> threads = new ArrayList<Thread>();
+
+        int threadCount = 3;
+
+        for (int i = 0; i < threadCount; i++) {
+            threads.add(i, new Thread(new Runnable() {
+                public void run() {
+                    Random rand = new Random();
+
+                    System.out.println("Hello from thread : " + rand.nextInt(10));
+                }
+            }));
+        }
+
+        threads.forEach((Thread t) -> {
+            t.start();
+        });
 
         /*try {
             Parser parser = new Parser("C:/data.txt");

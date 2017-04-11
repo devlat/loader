@@ -60,6 +60,7 @@ public class Parser {
     public HashMap<String, String> getLinks() {
         if (this.links.isEmpty()) {
             System.out.println("Данных нет.");
+
             return null;
         }
 
