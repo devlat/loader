@@ -5,6 +5,8 @@ import core.Loader;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Stack;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,6 +24,19 @@ public class App {
          * Словарь вида "ключ"-"значение" для хранения аргументов.
          */
         HashMap<String, String> cmdArgs = new HashMap<String, String>();
+
+        /**
+         * Реализация стэка для многопоточного использования.
+         */
+        Stack<SimpleEntry<String, String>> someData = new Stack();
+
+        someData.push((new SimpleEntry<String, String>("http://ayylmao.com", "output.dat")));
+        someData.push((new SimpleEntry<String, String>("http://rofl.us", "fantastic.dat")));
+
+        System.out.println(someData);
+        System.out.println(someData.pop().getValue());
+        System.out.println(someData);
+
 
         /************************************************
          * Черновой вариант парсинга аргументов запуска *
@@ -49,6 +64,7 @@ public class App {
         // ************************************************************
         // * Черновой вариант под реализацию многопоточной загрузки *
         // ************************************************************
+        /*
         ArrayList<Thread> threads = new ArrayList<Thread>();
 
         int threadCount = 3;
@@ -65,7 +81,7 @@ public class App {
 
         threads.forEach((Thread t) -> {
             t.start();
-        });
+        });*/
 
         /*try {
             Parser parser = new Parser("C:/data.txt");
